@@ -1,0 +1,20 @@
+class Solution {
+ public:
+  void rotate(vector<int>& nums, int k) {
+    if (k <= 0 || nums.size() <= 1) 
+    {
+      return;
+    }
+    int len = nums.size();
+    k %= len;
+    vector<int> nums_tmp(nums.end() - k, nums.end());
+    for (int i = len-k-1; i >= 0; i--) 
+    {
+      nums[i+k] = nums[i];
+    }
+    for (int i = 0; i < k; i++)
+    {
+      nums[i] = nums_tmp[i];
+    }
+  }
+};
